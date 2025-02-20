@@ -1,15 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import "leaflet-defaulticon-compatibility"; // Fix для отображения маркеров
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 
 const MapComponent = () => {
   // Массив с маркерами: координаты и информация для перехода
-  const markers = [
-    { id: 1, position: [51.505, -0.09], title: "Лондон", link: "/london" },
-    { id: 2, position: [48.8566, 2.3522], title: "Париж", link: "/paris" },
-    { id: 3, position: [40.7128, -74.006], title: "Нью-Йорк", link: "/new-york" },
-  ];
+  const [markers, serMarkers]  = useState([])
+  const 
+  
+  
+  // const markers = [
+  //   { id: 1, position: [51.505, -0.09], title: "Лондон", link: "/london" },
+  //   { id: 2, position: [48.8566, 2.3522], title: "Париж", link: "/paris" },
+  //   { id: 3, position: [40.7128, -74.006], title: "Нью-Йорк", link: "/new-york" },
+  // ];
 
   // Функция для перехода при клике
   const handleRedirect = (link) => {
