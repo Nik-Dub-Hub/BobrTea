@@ -15,7 +15,7 @@ const MapComponent = () => {
   const handleRedirect = (link) => {
     window.location.href = link; // перенаправление (или используйте роутинг, если используете react-router)
   };
-
+   
   return (
     <MapContainer
       center={[51.505, -0.09]} // Начальные координаты центра карты
@@ -61,3 +61,5 @@ const MapComponent = () => {
 };
 
 export default MapComponent;
+
+  
