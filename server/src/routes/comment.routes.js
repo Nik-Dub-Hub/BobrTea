@@ -7,6 +7,8 @@ router
     
     .get('/user', verifyAccessToken, CommentController.getCommentByUserId)
 
+    .get('/tea/:id', verifyAccessToken, CommentController.getCommentByTeaId)
+
     .post('/:id',  verifyAccessToken, CommentController.createComment)
 
     .put('/:id',  verifyAccessToken,CommentController.updateComment)
