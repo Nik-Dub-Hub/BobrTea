@@ -1,8 +1,12 @@
 const router = require('express').Router();
 const teaRoutes = require('./tea.routes')
 const formatResponse = require('../utils/formatResponse');
+const authRoutes = require('./auth.routes')
+
 
 router.use('/tea', teaRoutes)
+
+router.use('/auth',authRoutes)
 
 
 router.use('*',(req, res)=>{
