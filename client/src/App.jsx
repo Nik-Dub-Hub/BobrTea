@@ -6,6 +6,8 @@ import MainPage from "./pages/MainPage/MainPage";
 import UserApi from "./entities/user/UserApi";
 import { setAccessToken } from "./shared/lib/axiosInstance";
 import LoginPage from "./pages/LoginPage/LoginPage";
+import OneTeaPage from "./pages/OneTeaPage/OneTeaPage"
+
 
 function App() {
   const [user, setUser] = useState(null);
@@ -32,6 +34,7 @@ console.log(user);
           <Route path="/" element={<MainPage />} />
           <Route path="/reg" element={<RegPage setUser={setUser} />} />
           <Route path="/login" element={<LoginPage setUser={setUser}/>}/>
+          <Route path="/tea/:id" element={<OneTeaPage />} />
         </Route>
         <Route path="*" element={<>Извинитесь!</>} />
       </Routes>
