@@ -8,8 +8,7 @@ import { useNavigate } from 'react-router';
 const INITIAL_INPUTS_DATA = {
   username: "",
   email: "",
-  password: "",
-  repeatPassword: "",
+  password: ""
 };
 
 export default function SignUpForm({setUser}) {
@@ -24,7 +23,6 @@ export default function SignUpForm({setUser}) {
 
     const onSubmitHandler = async(event) => {
       event.preventDefault()
-
       const {isValid,error:errorValidate} = UserValidator.validateSignUp(inputs)
 
       if(!isValid){
@@ -54,13 +52,14 @@ export default function SignUpForm({setUser}) {
   return (
     <form onSubmit={onSubmitHandler}>
       <h1>Регистрация чайного любителя</h1>
+      {error && <div>Something wrong... <br />{error}</div>}
       <label htmlFor="username">Имя пользователя:</label>
       <input type="text" name="username" onChange={onChangeHandler} value={username}/>
       <label htmlFor="email">Электронная почта:</label>
       <input type="email" name="email" onChange={onChangeHandler} value={email}/>
       <label htmlFor="password">Пароль пользователя:</label>
       <input type="password" name="password" onChange={onChangeHandler} value={password}/>
-      <button type='button'>Зарегистрироваться</button>
+      <button type='submit'>Зарегистрироваться</button>
     </form>
   );
 }

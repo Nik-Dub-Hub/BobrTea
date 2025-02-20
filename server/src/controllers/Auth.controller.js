@@ -8,7 +8,8 @@ const generateTokens = require("../utils/generateTokens");
 class AuthController {
   static async refreshToken(req, res) {
     try {
-      const { user } = req.locals;
+      const { user } = res.locals;
+
       const { accessToken, refreshToken } = generateTokens({ user });
       res.status(200).cookie("refreshToken", refreshToken, cookiesConfig).json(
         formatResponse(200, "Successfully regenerate tokens", {
@@ -24,14 +25,13 @@ class AuthController {
   }
 
   static async signUp(req, res) {
-    const { username, email, password ,isAdmin} = req.body;
+    const { username, email, password } = req.body;
 
     const { isValid, error } = AuthValidator.validateSignUp({
       username,
       password,
       email,
     });
-
 
     if (!isValid) {
       return res
@@ -63,7 +63,7 @@ class AuthController {
         username,
         email: normalizedEmail,
         password: hashedPassword,
-        isAdmin
+        isAdmin: false,
       });
 
       if (!newUser) {
@@ -103,9 +103,10 @@ class AuthController {
   static async signIn(req, res) {
     const { email, password } = req.body;
 
-    
-
-    const { isValid, error } = AuthValidator.validateSignIn({email,password})
+    const { isValid, error } = AuthValidator.validateSignIn({
+      email,
+      password,
+    });
 
     if (!isValid) {
       return res
@@ -116,16 +117,15 @@ class AuthController {
     const normalizedEmail = email.toLowerCase();
 
     try {
-      const user = await UserService.getByEmail(normalizedEmail);    
-      
+      const user = await UserService.getByEmail(normalizedEmail);
+
       if (!user) {
         return res
           .status(400)
           .json(formatResponse(400, "User not found", null, "User not found"));
       }
 
-      const isPasswordValid = await bcrypt.compare(password,user.password);
-
+      const isPasswordValid = await bcrypt.compare(password, user.password);
 
       if (!isPasswordValid) {
         return res
@@ -135,12 +135,20 @@ class AuthController {
           );
       }
 
-      const plainUser = user.get({plain:true})
-      delete plainUser.password
+      const plainUser = user.get({ plain: true });
+      delete plainUser.password;
 
-      const {accessToken,refreshToken} = generateTokens({user:plainUser})
+      const { accessToken, refreshToken } = generateTokens({ user: plainUser });
 
-      res.status(200).cookie('refreshToken',refreshToken,cookiesConfig).json(formatResponse(200,'Login successful',{user:plainUser,accessToken}))
+      res
+        .status(200)
+        .cookie("refreshToken", refreshToken, cookiesConfig)
+        .json(
+          formatResponse(200, "Login successful", {
+            user: plainUser,
+            accessToken,
+          })
+        );
     } catch ({ message }) {
       res
         .status(500)
@@ -148,9 +156,11 @@ class AuthController {
     }
   }
 
-  static async signOut(req,res){
+  static async signOut(req, res) {
     try {
-        res.clearCookie('refreshToken').json(formatResponse(200,'Logout successfully'))
+      res
+        .clearCookie("refreshToken")
+        .json(formatResponse(200, "Logout successfully"));
     } catch ({ message }) {
       res
         .status(500)
@@ -159,4 +169,4 @@ class AuthController {
   }
 }
 
-module.exports = AuthController
+module.exports = AuthController;
