@@ -23,11 +23,9 @@ export default function OneTeaPage() {
         {tea && (
             <>
                 <h3>{tea.title}</h3>
-                <h3>{tea.place}</h3>
                 <img src={tea.img} alt={tea.title} />
+                <h3>{tea.place}</h3>
                 <h3>{tea.description}</h3>
-                <h3>{tea.longitude}</h3>
-                <h3>{tea.width}</h3>
             </>
         )}
         </div>
