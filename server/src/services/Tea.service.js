@@ -1,11 +1,11 @@
-const { Tea } = require('../db/models');
+const { Tea, User } = require('../db/models');
 
 class TeaService {
     static async getAll() {
         return await Tea.findAll();
     }
     static async getById(id){
-        return await Tea.findByPk(id)
+        return await Tea.findByPk(id, { include: { model: User}})
     }
     
     static async create(data){

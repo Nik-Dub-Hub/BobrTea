@@ -1,6 +1,6 @@
 import { axiosInstance } from "../../shared/lib/axiosInstance";
 
-export class PostApi{
+export class CommentApi{
     static async getAll(){
         const {data} = await axiosInstance.get('/comment');
         return data
@@ -11,7 +11,8 @@ export class PostApi{
     }
 
     static async getAllByTeaId(id){
-        const {data} = await axiosInstance.get('/comment/tea/:id');
+        const {data} = await axiosInstance.get(`/comment/tea/${id}`);
+       console.log(data)
         return data
     }
 
@@ -29,3 +30,4 @@ export class PostApi{
         return data
     }
 }
+
