@@ -20,4 +20,9 @@ export class TeaApi {
     const { data } = await axiosInstance.delete(`/tea/${id}`);
     return data;
   }
+
+  static async update(id,teaData){
+    const {data} = await axiosInstance.put(`/tea/${id}`,teaData)
+    return data
+  }
 }

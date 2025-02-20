@@ -1,5 +1,6 @@
 import React from 'react'
-import MapComponent from '../../widgets/MapComponent/MapComponent'
+import MapComponent from '../../widgets/Map/MapComponent'
+
 
 export default function MainPage() {
   return (

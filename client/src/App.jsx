@@ -7,11 +7,11 @@ import UserApi from "./entities/user/UserApi";
 import { setAccessToken } from "./shared/lib/axiosInstance";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import OneTeaPage from "./pages/OneTeaPage/OneTeaPage"
+import AdminOffice from "./pages/AdminOffice/AdminOffice";
 
 
 function App() {
   const [user, setUser] = useState(null);
-console.log(user);
 
   useEffect(()=>{
     UserApi.refreshToken().then(({statusCode,data,error,message})=>{
@@ -35,8 +35,7 @@ console.log(user);
           <Route path="/reg" element={<RegPage setUser={setUser} />} />
           <Route path="/tea/:id" element={<OneTeaPage user={user}/>} />
           <Route path="/login" element={<LoginPage setUser={setUser}/>}/>
-          
-
+          <Route path="/adminOffice" element={<AdminOffice/>}/>
         </Route>
         <Route path="*" element={<>Извинитесь!</>} />
       </Routes>
