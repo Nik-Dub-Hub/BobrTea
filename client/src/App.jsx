@@ -33,8 +33,10 @@ console.log(user);
         <Route path="/" element={<Layout user={user} setUser={setUser} />}>
           <Route path="/" element={<MainPage />} />
           <Route path="/reg" element={<RegPage setUser={setUser} />} />
+          <Route path="/tea/:id" element={<OneTeaPage user={user}/>} />
           <Route path="/login" element={<LoginPage setUser={setUser}/>}/>
-          <Route path="/tea/:id" element={<OneTeaPage />} />
+          
+
         </Route>
         <Route path="*" element={<>Извинитесь!</>} />
       </Routes>

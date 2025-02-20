@@ -40,15 +40,18 @@ const MapComponent = () => {
       center={[30.505, 100.09]} // Начальные координаты центра карты
       zoom={4} // Уровень масштаба
       style={{ height: "80vh", width: "75%",  marginLeft: "150px", marginBottom:"150px"}} // Размеры карты
+
     >
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" // Источник тайлов
         attribution='&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
       />
       {markers.map((marker) => (
+
         <Marker
           key={marker.id}
           position={[+marker.width, +marker.longitude]}
+
           eventHandlers={{
             click: () => handleRedirect(marker.link),
           }}
@@ -61,6 +64,7 @@ const MapComponent = () => {
                 e.stopPropagation(); // Чтобы не вызывалось событие маркера
                 e.preventDefault();
                 handleRedirect(`/tea/${marker.id}`);
+
               }}
               style={{
                 backgroundColor: "#007bff",
@@ -81,3 +85,4 @@ const MapComponent = () => {
 };
 
 export default MapComponent;
+
