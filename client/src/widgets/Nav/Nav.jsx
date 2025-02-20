@@ -37,6 +37,7 @@ export default function Nav({ user, setUser }) {
   }
   return (
     <nav className={styles.container}>
+      <img src="../../../public/free-icon-coffee-cup-993687.png" alt="cup tea" className={styles.logo}/>
       <NavLink
         to="/"
         className={({ isActive }) => (isActive ? styles.active : "")}

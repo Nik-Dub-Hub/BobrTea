@@ -2,13 +2,12 @@ import React, { useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import "leaflet-defaulticon-compatibility"; // Fix для отображения маркеров
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
+import { useNavigate } from "react-router";
 
 const MapComponent = () => {
   // Массив с маркерами: координаты и информация для перехода
   const [markers, serMarkers]  = useState([])
-  const 
-  
-  
+  const navigate = useNavigate()
   // const markers = [
   //   { id: 1, position: [51.505, -0.09], title: "Лондон", link: "/london" },
   //   { id: 2, position: [48.8566, 2.3522], title: "Париж", link: "/paris" },
