@@ -9,6 +9,12 @@ export class PostApi{
         const {data} = await axiosInstance.get('/comment/user');
         return data
     }
+
+    static async getAllByTeaId(id){
+        const {data} = await axiosInstance.get('/comment/tea/:id');
+        return data
+    }
+
     static async create(inputs){
         const {content} = inputs
         const {data} = await axiosInstance.post('/comment', {content});

@@ -10,6 +10,10 @@ class CommentService{
         return await Comment.findAll({where:{user_id}});
     }
 
+    static async getAllByTeaId(tea_id) {
+      return await Comment.findAll({where:{tea_id}});
+  }
+
     static async create(data) {
         return await Comment.create(data);
     }  
