@@ -1,5 +1,5 @@
 const express = require("express");
-const removeHTTPHeader = require("../middleware/removeHeader");
+
 const morgan = require("morgan");
 const path = require("path");
 const cors = require('cors');
@@ -15,7 +15,6 @@ const serverConfig = (app) => {
   app.use(express.urlencoded({ extended: true }));
   app.use(cors(corsOptions));
   app.use(express.json());
-  app.use(removeHTTPHeader); 
   app.use(morgan("dev"));
   app.use(cookieParser());
 };

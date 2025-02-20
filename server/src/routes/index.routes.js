@@ -1,7 +1,8 @@
 const router = require('express').Router();
+const teaRoutes = require('./tea.routes')
 const formatResponse = require('../utils/formatResponse');
 
-
+router.use('/tea', teaRoutes)
 
 
 router.use('*',(req, res)=>{
