@@ -6,7 +6,7 @@ const {SECRET_ACCESS_TOKEN,SECRET_REFRESH_TOKEN} = process.env
 
 const generateTokens = (payload) => ({
     accessToken:jwt.sign(payload,SECRET_ACCESS_TOKEN,jwtConfig.access), 
-    accessToken:jwt.sign(payload,SECRET_REFRESH_TOKEN,jwtConfig.refresh), 
+    refreshToken:jwt.sign(payload,SECRET_REFRESH_TOKEN,jwtConfig.refresh), 
 })
 
 module.exports = generateTokens
