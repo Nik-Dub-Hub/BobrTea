@@ -1,96 +1,174 @@
 import { useState } from "react";
-import { CommentApi } from '../../entities/CommentApi'
+import { TeaApi } from "../../entities/tea/TeaApi";
+import Swal from "sweetalert2";
+import styles from "./EditingFormTea.module.css";
 
+export default function EditingFormTea({ setTeas, setCreate }) {
+  const [inputs, setInputs] = useState({
+    title: "",
+    place: "",
+    img: "",
+    description: "",
+    longitude: "",
+    width: "",
+  });
+  const [error, setError] = useState("");
 
-export default function EditingFormTea({setTea}){
-    const [inputs, setInputs] = useState({ title: '', place: '', img: '', description: '', longitude: '', width: '' });
-    const [error, setError] = useState('');
+  const onChangeHandler = (event) => {
+    setInputs((prev) => ({ ...prev, [event.target.name]: event.target.value }));
+  };
 
-    const onChangeHandler = (event) => {
-        setInputs((prev) => ({ ...prev, [event.target.name]: event.target.value }));
-      };
+  const handleCancelClick = () => {
+    setCreate(false);
+  };
 
-    async function onSubmitHandler(event) {
-        event.preventDefault();
-        if (!inputs.title || inputs.title.length === 0) {
-          setError('Поле Название не должно быть пустым ');
-          return;
-        }
-        if (!inputs.place || inputs.place.length === 0) {
-            setError('Поле Место не должно быть пустым ');
-            return;
-          }
-        if (!inputs.img || inputs.img.length === 0) {
-          setError('Поле Картинка не должно быть пустым ');
-          return;
-        }
-        if (!inputs.description || inputs.description.length === 0) {
-            setError('Поле Описание не должно быть пустым ');
-            return;
-          }
-        if (!inputs.longitude || inputs.longitude
-            .length === 0 || isNaN(longitude)) {
-          setError('Название не должно быть пустым ');
-          return;
-        }
-        if (!inputs.width || inputs.width
-            .length === 0 || isNaN(width)) {
-          setError('Название не должно быть пустым ');
-          return;
-        }
-        try {
-            const {statusCode, error, data, message } = await CommentApi.create(inputs)
-            if(error){
-                setError(message);
-            }
-            if(statusCode === 201){
-                setTea((prev) => [...prev, data]);
-            }   setInputs({ title: '', place: '', img: '', description: '', longitude: '', width: '' });
-                setError('');
-        } catch (error) {
-            console.log(error);
-        }
+  const isValidCoordinate = (value, min, max) => {
+    const num = parseFloat(value);
+    console.log(num);
+    
+    return !isNaN(num) && num >= min && num <= max;
+  };
+
+  async function onSubmitHandler(event) {
+    event.preventDefault();
+    if (!inputs.title || inputs.title.length === 0) {
+      Swal.fire(
+        "Поле Название не должно быть пустым  ",
+        "Заполните поле",
+        "error"
+      );
+      return;
     }
-return(
-    <form onSubmit={onSubmitHandler}>
-      <input
-        name='title'
-        placeholder='title'
-        value={inputs.title}
-        onChange={onChangeHandler}
-      />
-      <input
-        name='place'
-        placeholder='place'
-        value={inputs.place}
-        onChange={onChangeHandler}
-      />
-      <input
-        name='img'
-        placeholder='img'
-        value={inputs.img}
-        onChange={onChangeHandler}
-      />
-      <input
-        name='description'
-        placeholder='description'
-        value={inputs.description}
-        onChange={onChangeHandler}
-      />
-      <input
-        name='longitude'
-        placeholder='longitude'
-        value={inputs.longitude}
-        onChange={onChangeHandler}
-      />
-      <input
-        name='width'
-        placeholder='width'
-        value={inputs.width}
-        onChange={onChangeHandler}
-      />
-      <button type='submit'>Создать</button>
-      {error && <span style={{ color: 'red' }}>{error}</span>}
-    </form>
-)
+    if (!inputs.place || inputs.place.length === 0) {
+      Swal.fire(
+        "Поле Место не должно быть пустым  ",
+        "Заполните поле",
+        "error"
+      );
+      return;
+    }
+    if (!inputs.img || inputs.img.length === 0) {
+      Swal.fire(
+        "Поле Картинка не должно быть пустым  ",
+        "Заполните поле",
+        "error"
+      );
+      return;
+    }
+    if (!inputs.description || inputs.description.length === 0) {
+      Swal.fire(
+        "Поле Описание не должно быть пустым ",
+        "Заполните поле",
+        "error"
+      );
+      return;
+    }
+    if (
+      !inputs.longitude ||
+      inputs.longitude.trim().length === 0 ||
+      !isValidCoordinate(inputs.longitude, -100, 100)
+    ) {
+      Swal.fire(
+        "Некорректная долгота",
+        "Долгота должна быть числом от -180 до 180",
+        "error"
+      );
+      return;
+    }
+    if (
+      !inputs.width ||
+      inputs.width.trim().length === 0 ||
+      !isValidCoordinate(inputs.width, -90, 90)
+    ) {
+       Swal.fire(
+         "Некорректная широта",
+         "Широта должна быть числом от -90 до 90",
+         "error"
+       );
+      return;
+    }
+    try {
+      const { statusCode, error, data, message } = await TeaApi.create(inputs);
+      if (error) {
+        Swal.fire("Ошибка!", message, "error");
+        return;
+      }
+      if (statusCode === 201) {
+        setTeas((prev) => [...prev, data]);
+      }
+      setInputs({
+        title: "",
+        place: "",
+        img: "",
+        description: "",
+        longitude: "",
+        width: "",
+      });
+      Swal.fire("Создано!", message, "success");
+      setError("");
+    } catch (error) {
+      Swal.fire("Ошибка!", error.message, "error");
+    }
+  }
+ return (
+   <div className={styles.container}>
+     <form onSubmit={onSubmitHandler}>
+       <input
+         className={styles.input}
+         name="title"
+         placeholder="Название чая"
+         value={inputs.title}
+         onChange={onChangeHandler}
+       />
+       <input
+         className={styles.input}
+         name="place"
+         placeholder="Место происхождения"
+         value={inputs.place}
+         onChange={onChangeHandler}
+       />
+       <input
+         className={styles.input}
+         name="img"
+         placeholder="URL изображения"
+         value={inputs.img}
+         onChange={onChangeHandler}
+       />
+       <input
+         className={styles.input}
+         name="description"
+         placeholder="Описание"
+         value={inputs.description}
+         onChange={onChangeHandler}
+       />
+       <input
+         className={styles.input}
+         name="longitude"
+         placeholder="Долгота на карте"
+         value={inputs.longitude}
+         onChange={onChangeHandler}
+       />
+       <input
+         className={styles.input}
+         name="width"
+         placeholder="Широта на карте"
+         value={inputs.width}
+         onChange={onChangeHandler}
+       />
+       <div className={styles.buttonsContainer}>
+         <button className={styles.button} type="submit">
+           Создать
+         </button>
+         <button
+           className={`${styles.button} ${styles.cancelButton}`}
+           type="button"
+           onClick={handleCancelClick}
+         >
+           Отменить
+         </button>
+       </div>
+       {error && <span className={styles.errorMessage}>{error}</span>}
+     </form>
+   </div>
+ );
 }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { TeaApi } from "../../../../entities/tea/TeaApi";
 import Swal from "sweetalert2";
+import styles from "./ChangedFormTea.module.css";
 
 export default function ChangedFormTea({ setEditing, tea, setTeas }) {
   const { id } = tea;
@@ -51,15 +52,17 @@ export default function ChangedFormTea({ setEditing, tea, setTeas }) {
           id,
           inputs
         );
-        if(error){
-            Swal.fire("Ошибка!", message, "error");
-            return
+        if (error) {
+          Swal.fire("Ошибка!", message, "error");
+          return;
         }
 
         if (statusCode === 200) {
           Swal.fire("Изменено", message, "success");
-          setEditing(false)
-          setTeas((prevTeas)=> prevTeas.map((t) => t.id === id ? {...t,...inputs}:t))
+          setEditing(false);
+          setTeas((prevTeas) =>
+            prevTeas.map((t) => (t.id === id ? { ...t, ...inputs } : t))
+          );
         }
       } catch ({ message }) {
         Swal.fire("Ошибка!", message, "error");
@@ -68,55 +71,87 @@ export default function ChangedFormTea({ setEditing, tea, setTeas }) {
   };
 
   return (
-    <>
+    <div className={styles.container}>
       <form onSubmit={onSubmitHandle}>
+        <label htmlFor="title">Название чая</label>
         <input
+          className={styles.input}
           type="text"
           name="title"
-          placeholder="Название чая"
+          id="title"
+          placeholder="Введите название чая"
           value={inputs.title}
           onChange={onChangeHandler}
         />
+
+        <label htmlFor="place">Место происхождения</label>
         <input
+          className={styles.input}
           type="text"
           name="place"
-          placeholder="Место происхождения"
+          id="place"
+          placeholder="Введите место происхождения"
           value={inputs.place}
           onChange={onChangeHandler}
         />
+
+        <label htmlFor="img">URL изображения</label>
         <input
+          className={styles.input}
           type="text"
           name="img"
-          placeholder="URL изображения"
+          id="img"
+          placeholder="Введите URL изображения"
           value={inputs.img}
           onChange={onChangeHandler}
         />
+
+        <label htmlFor="description">Описание</label>
         <input
+          className={styles.input}
           type="text"
           name="description"
-          placeholder="Описание"
+          id="description"
+          placeholder="Введите описание"
           value={inputs.description}
           onChange={onChangeHandler}
         />
+
+        <label htmlFor="longitude">Долгота на карте</label>
         <input
+          className={styles.input}
           type="text"
           name="longitude"
-          placeholder="Долгота на карте"
+          id="longitude"
+          placeholder="Введите долготу"
           value={inputs.longitude}
           onChange={onChangeHandler}
         />
+
+        <label htmlFor="width">Широта на карте</label>
         <input
+          className={styles.input}
           type="text"
           name="width"
-          placeholder="Широта на карте"
+          id="width"
+          placeholder="Введите широту"
           value={inputs.width}
           onChange={onChangeHandler}
         />
-        <button type="submit">Сохранить</button>
-        <button type="button" onClick={handleCancelClick}>
-          Отменить
-        </button>
+
+        <div className={styles.buttonsContainer}>
+          <button className={styles.button} type="submit">
+            Сохранить
+          </button>
+          <button
+            className={`${styles.button} ${styles.cancelButton}`}
+            type="button"
+            onClick={handleCancelClick}
+          >
+            Отменить
+          </button>
+        </div>
       </form>
-    </>
+    </div>
   );
 }
