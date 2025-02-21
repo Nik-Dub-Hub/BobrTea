@@ -1,0 +1,26 @@
+.commentCard {
+  background-color: #ffffff; /* Белый фон для комментария */
+  border: 1px solid #ddd; /* Легкая граница */
+  border-radius: 8px; /* Закругленные углы */
+  padding: 15px; /* Отступы внутри карточки */
+  margin-bottom: 15px; /* Отступ между комментариями */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Легкая тень */
+}
+
+.commentContent {
+  color: #333; /* Цвет текста комментария */
+  margin-bottom: 10px; /* Отступ снизу текста комментария */
+}
+
+.deleteButton {
+  background-color: #f44336; /* Красный цвет для кнопки удаления */
+  color: white; /* Цвет текста на кнопке */
+  padding: 8px 12px; /* Отступы внутри кнопки */
+  border: none; /* Убираем границу */
+  border-radius: 4px; /* Закругленные углы кнопки */
+  cursor: pointer; /* Указатель при наведении на кнопку */
+}
+
+.deleteButton:hover {
+  background-color: #e53935; /* Темнее при наведении на кнопку удаления */
+}

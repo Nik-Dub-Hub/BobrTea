@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { CommentApi } from '../../entities/CommentApi/CommentApi'
+import styles from './CommentForm.module.css'
 
 
 export default function CommentForm({ setComments, id}){
@@ -35,16 +36,19 @@ export default function CommentForm({ setComments, id}){
     }
 }
 
-return (
-    <form onSubmit={onSubmitHandler}>
-      <textarea
-        name='content'
-        placeholder='content'
-        value={inputs.content}
-        onChange={onChangeHandler}
-      />
-       <button type='submit'>Нажать</button>
-      {error && <span style={{ color: 'red' }}>{error}</span>}
-    </form>
-  );    
+ return (
+   <form className={styles.commentForm} onSubmit={onSubmitHandler}>
+     <textarea
+       className={styles.textarea}
+       name="content"
+       placeholder="Напишите ваш комментарий..."
+       value={inputs.content}
+       onChange={onChangeHandler}
+     />
+     <button className={styles.submitButton} type="submit">
+       Прокомментировать
+     </button>
+     {error && <span className={styles.error}>{error}</span>}
+   </form>
+ );
 }

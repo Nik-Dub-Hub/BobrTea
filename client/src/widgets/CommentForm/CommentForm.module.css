@@ -1,0 +1,43 @@
+.commentForm {
+    display: flex;
+    flex-direction: column; /* Вертикальное расположение элементов */
+    margin-bottom: 20px; /* Отступ снизу формы */
+    background-color: #f9f9f9; /* Светлый фон формы */
+    padding: 15px; /* Отступы внутри формы */
+    border-radius: 8px; /* Закругленные углы */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Легкая тень */
+}
+
+.textarea {
+    width: 97%; /* Полная ширина текстового поля */
+    height: 100px; /* Высота текстового поля */
+    padding: 10px; /* Внутренние отступы */
+    border: 1px solid #ccc; /* Граница текстового поля */
+    border-radius: 4px; /* Закругленные углы текстового поля */
+    resize: none; /* Запрет изменения размера текстового поля */
+}
+
+.textarea:focus {
+    outline: none; /* Убираем стандартное выделение при фокусе */
+    border-color: #4CAF50; /* Цвет границы при фокусе */
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); /* Легкое свечение при фокусе */
+}
+
+.submitButton {
+    margin-top: 10px; /* Отступ сверху для кнопки */
+    background-color: #4CAF50; /* Зеленый цвет кнопки */
+    color: white; /* Цвет текста на кнопке */
+    padding: 10px; /* Внутренние отступы кнопки */
+    border: none; /* Убираем границу кнопки */
+    border-radius: 4px; /* Закругленные углы кнопки */
+    cursor: pointer; /* Указатель при наведении на кнопку */
+}
+
+.submitButton:hover {
+    background-color: #367C39; /* Темнее при наведении на кнопку */
+}
+
+.error {
+    color: #f44336; /* Красный цвет для сообщений об ошибках */
+    margin-top: 10px; /* Отступ сверху для сообщения об ошибке */
+}
