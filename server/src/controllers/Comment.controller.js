@@ -73,7 +73,7 @@ class CommentController {
   static async createComment(req, res) {
     const { content } = req.body;
     const tea_id = req.params.id;
-    const user_id = req.locals.user.id
+    const user_id = res.locals.user.id
     
 
     const { isValid, error } = CommentValidator.validate({ content });
@@ -133,6 +133,8 @@ class CommentController {
 
   static async deleteComment(req, res) {
     const { id } = req.params;
+    console.log(id);
+    
     if (!isValidId(id)) {
       return res.status(400).json(formatResponse(400, "Invalid task ID"));
     }
