@@ -1,7 +1,7 @@
 import React from "react";
 import { CommentApi } from "../../entities/CommentApi/CommentApi";
 import { Link } from "react-router";
-
+import styles from './CommentCard.module.css'
 
 export default function CommentCard({comment,user, setComments,setCommentUser}) {
 
@@ -22,12 +22,14 @@ export default function CommentCard({comment,user, setComments,setCommentUser}) 
   };
 
   return (
-  <div>
-    <h3>{comment.content}</h3>
-    {user?.id === comment.user_id && <>
-    <button type='button' onClick={deleteButtonHandler}>Удалить</button>
-    </>}
-  </div>
-  )
+    <div className={styles.commentCard}>
+      <h3 className={styles.commentContent}>{comment.content}</h3>
+      {user?.id === comment.user_id && (
+        <button className={styles.deleteButton} type='button' onClick={deleteButtonHandler}>
+          Удалить
+        </button>
+      )}
+    </div>
+  );
 }
 
