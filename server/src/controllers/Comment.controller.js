@@ -22,7 +22,7 @@ class CommentController {
   }
 
   static async getCommentByUserId(req, res) {
-    const user_id = req.locals.user.id;
+    const user_id = res.locals.user.id;
     if (!isValidId(user_id)) {
       return res.status(400).json(formatResponse(400, "Invalid task ID"));
     }

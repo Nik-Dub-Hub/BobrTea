@@ -13,8 +13,7 @@ export default function CommentCard({comment,user, setComments,setCommentUser}) 
         alert(message)
       }
       if(statusCode === 200){
-        setComments((prev)=> prev.filter((el)=> el.id !== comment.id))
-        
+        setCommentUser((prev)=> prev.filter((el)=> el.id !== comment.id))
       }
     } catch (error) {
       console.log(error);

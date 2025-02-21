@@ -38,7 +38,7 @@ function App() {
           <Route path="/tea/:id" element={<OneTeaPage user={user}/>} />
           <Route path="/login" element={<LoginPage setUser={setUser}/>}/>
           <Route path="/adminOffice" element={<AdminOffice/>}/>
-          <Route path="/userOffice" element={<UserOffice/>}/>
+          <Route path="/userOffice" element={<UserOffice user={user}/>}/>
         </Route>
         <Route path="*" element={<NotFound/>} />
       </Routes>
