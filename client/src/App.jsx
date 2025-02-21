@@ -8,6 +8,7 @@ import { setAccessToken } from "./shared/lib/axiosInstance";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import OneTeaPage from "./pages/OneTeaPage/OneTeaPage"
 import AdminOffice from "./pages/AdminOffice/AdminOffice";
+import NotFound from "./widgets/NotFound/NotFound";
 
 
 function App() {
@@ -37,7 +38,7 @@ function App() {
           <Route path="/login" element={<LoginPage setUser={setUser}/>}/>
           <Route path="/adminOffice" element={<AdminOffice/>}/>
         </Route>
-        <Route path="*" element={<>Извинитесь!</>} />
+        <Route path="*" element={<NotFound/>} />
       </Routes>
     </BrowserRouter>
   );
