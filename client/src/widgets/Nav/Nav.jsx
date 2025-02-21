@@ -62,7 +62,7 @@ export default function Nav({ user, setUser }) {
           )}
           {!user.isAdmin && (
             <>
-              <NavLink to="/userOffice"> </NavLink>
+              <NavLink to="/userOffice">{user.username} </NavLink>
             </>
           )}
           <NavLink to="/" onClick={signOutHandler}>

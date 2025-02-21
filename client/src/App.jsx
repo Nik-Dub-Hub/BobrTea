@@ -9,6 +9,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import OneTeaPage from "./pages/OneTeaPage/OneTeaPage"
 import AdminOffice from "./pages/AdminOffice/AdminOffice";
 import NotFound from "./widgets/NotFound/NotFound";
+import UserOffice from "./pages/UserOffice/UserOffice";
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
           <Route path="/tea/:id" element={<OneTeaPage user={user}/>} />
           <Route path="/login" element={<LoginPage setUser={setUser}/>}/>
           <Route path="/adminOffice" element={<AdminOffice/>}/>
+          <Route path="/userOffice" element={<UserOffice/>}/>
         </Route>
         <Route path="*" element={<NotFound/>} />
       </Routes>

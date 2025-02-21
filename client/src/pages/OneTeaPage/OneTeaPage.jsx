@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { TeaApi } from '../../entities/tea/TeaApi';
 import { CommentApi } from '../../entities/CommentApi/CommentApi';
-import CommentCard  from '../../widgets/CommentCart/CommentCart'
+import CommentCard  from '../../widgets/CommentCard/CommentCard'
 
 export default function OneTeaPage({user}) {
     let { id } = useParams();
