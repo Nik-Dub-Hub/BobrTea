@@ -12,13 +12,12 @@ export class CommentApi{
 
     static async getAllByTeaId(id){
         const {data} = await axiosInstance.get(`/comment/tea/${id}`);
-       console.log(data)
+    //    console.log(data)
         return data
     }
 
-    static async create(inputs){
-        const {content} = inputs
-        const {data} = await axiosInstance.post('/comment', {content});
+    static async create(inputs,id){
+        const {data} = await axiosInstance.post(`/comment/${id}`, inputs);
         return data
     }
     static async update(id){
@@ -26,7 +25,7 @@ export class CommentApi{
         return data
     }
     static async delete(id){
-        const {data} = await axiosInstance.delete('/comment/:id');
+        const {data} = await axiosInstance.delete(`/comment/${id}`);
         return data
     }
 }
