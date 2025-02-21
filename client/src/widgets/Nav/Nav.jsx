@@ -37,7 +37,11 @@ export default function Nav({ user, setUser }) {
   }
   return (
     <nav className={styles.container}>
-      <img src="../../../public/free-icon-coffee-cup-993687.png" alt="cup tea" className={styles.logo}/>
+      <img
+        src="../../../public/free-icon-coffee-cup-993687.png"
+        alt="cup tea"
+        className={styles.logo}
+      />
       <NavLink
         to="/"
         className={({ isActive }) => (isActive ? styles.active : "")}
@@ -48,13 +52,19 @@ export default function Nav({ user, setUser }) {
         <>
           {user.isAdmin && (
             <>
-              <NavLink to="/adminOffice">{user.username}</NavLink>
+              <NavLink
+                to="/adminOffice"
+                className={({ isActive }) => (isActive ? styles.active : "")}
+              >
+                {user.username}
+              </NavLink>
             </>
           )}
-          {!user.isAdmin && 
-          <>
-          <NavLink to='/userOffice'> </NavLink>
-          </>}
+          {!user.isAdmin && (
+            <>
+              <NavLink to="/userOffice"> </NavLink>
+            </>
+          )}
           <NavLink to="/" onClick={signOutHandler}>
             Выйти
           </NavLink>
