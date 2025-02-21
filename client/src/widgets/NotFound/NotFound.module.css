@@ -1,0 +1,17 @@
+.container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.img{
+    width: 90%;
+    height: 700px;
+}
+
+.btn{
+    position: absolute;
+    bottom: 7%;
+    width: 300px;
+}
