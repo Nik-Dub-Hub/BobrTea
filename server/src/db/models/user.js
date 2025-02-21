@@ -8,8 +8,9 @@ module.exports = (sequelize, DataTypes) => {
     static associate({Tea, Comment}) {
       this.belongsToMany(Tea,{
         foreignKey: 'user_id',
+        as: 'Comments',
         through:{
-          model:Comment
+          model: Comment,
         },
 
 

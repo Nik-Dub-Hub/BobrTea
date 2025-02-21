@@ -1,42 +1,46 @@
-const { Tea, User } = require('../db/models');
+const { Tea, User } = require("../db/models");
 
 class TeaService {
-    static async getAll() {
-        return await Tea.findAll();
-    }
-    static async getById(id){
-        return await Tea.findByPk(id, { include: { model: User}})
-    }
-    
-    static async create(data){
-        return await Tea.create(data)
-    }
+  static async getAll() {
+    return await Tea.findAll();
+  }
+  static async getById(id) {
+    return await Tea.findByPk(id, {
+      include: {
+        model: User,
+        as: "Comments",
+        through: { attributes: ["id", "content", "tea_id", "user_id"] },
+      },
+    });
+  }
 
-    static async update(id,data){
-        const tea = await this.getById(id)
-        if (tea){
-            tea.title = data.title;
-            tea.place = data.place
-            tea.img = data.img;
-            tea.description = data.description
-            tea.longitude = data.longitude
-            tea.width = data.width
-            await tea.save()
-        }
-        return tea
+  static async create(data) {
+    return await Tea.create(data);
+  }
+
+  static async update(id, data) {
+    const tea = await this.getById(id);
+    if (tea) {
+      tea.title = data.title;
+      tea.place = data.place;
+      tea.img = data.img;
+      tea.description = data.description;
+      tea.longitude = data.longitude;
+      tea.width = data.width;
+      await tea.save();
     }
-    static async delete(id){
-        const tea = await this.getById(id);
-        if (tea) {
-            await tea.destroy()
-        }
-        return tea
+    return tea;
+  }
+  static async delete(id) {
+    const tea = await this.getById(id);
+    if (tea) {
+      await tea.destroy();
     }
-    
+    return tea;
+  }
 }
 
-
-module.exports = TeaService
+module.exports = TeaService;
 
 // const placeObject = {
 //     title: 'Example Title',
@@ -46,8 +50,6 @@ module.exports = TeaService
 //     longitude: 55.123456,
 //     width:  37.654321
 // };
-
-
 
 // TeaService.getAll()
 // .then((createdTea) => {
