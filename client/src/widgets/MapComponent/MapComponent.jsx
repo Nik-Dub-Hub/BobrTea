@@ -4,7 +4,6 @@ import "leaflet-defaulticon-compatibility"; // Fix для отображения
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 import { TeaApi } from "../../entities/tea/TeaApi";
 import { useNavigate } from "react-router";
-// import styles from './MapCommponent.css'
 
 const MapComponent = () => {
   const [markers, setMarkers] = useState([]);

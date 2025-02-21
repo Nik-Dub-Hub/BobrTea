@@ -1,0 +1,56 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  background-color: #f9f9f9; /* Светлый фон для формы */
+  border: 1px solid #ddd; /* Легкая граница */
+  border-radius: 8px; /* Закругленные углы */
+  padding: 50px; /* Отступы внутри формы */
+  width: 400px; /* Ширина формы */
+  margin: 20px auto; 
+}
+
+.input {
+  width: 95%; /* Полная ширина инпутов */
+  padding: 10px;
+  margin-bottom: 15px; /* Расстояние между инпутами */
+  border: 1px solid #ccc; /* Граница инпутов */
+  border-radius: 4px; /* Закругленные углы инпутов */
+  font-size: 14px; /* Размер текста */
+}
+
+.input:focus {
+  outline: none;
+  border-color: #4f46e5; /* Синий цвет при фокусе */
+  box-shadow: 0 0 4px rgba(79, 70, 229, 0.5); /* Лёгкое свечение при фокусе */
+}
+
+.button {
+  background-color: #4caf50; /* Зеленый цвет кнопки создания */
+  color: white; /* Цвет текста на кнопке */
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #45a049; /* Темнее при наведении */
+}
+
+.cancelButton {
+  background-color: #f44336; /* Красный цвет кнопки отмены */
+}
+
+.cancelButton:hover {
+  background-color: #e53935; /* Темнее при наведении на кнопку отмены */
+}
+
+.errorMessage {
+  color: red; /* Красный цвет для сообщений об ошибках */
+}
+
+/* Дополнительные стили для кнопок в одной строке */
+.buttonsContainer {
+    display: flex;
+    justify-content: space-between;
+}

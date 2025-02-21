@@ -1,0 +1,60 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background-color: #bfcff0; /* Нежный светло-серый фон */
+  border: 1px solid #b5bdc9; /* Лёгкая граница */
+  border-radius: 8px; /* Закруглённые углы */
+  padding: 50px; 
+  width: 300px; /* Ширина формы */
+  
+}
+
+
+.input {
+  width: 100%; /* Полная ширина для компактного вида */
+  padding: 8px; /* Внутренние отступы */
+  margin-bottom: 12px; /* Расстояние между инпутами */
+  border: 1px solid #9ca3af; /* Граница инпутов */
+  border-radius: 4px; /* Закруглённые углы инпутов */
+  background-color: #ffffff; /* Белый фон инпутов */
+  font-size: 14px; /* Размер текста */
+}
+
+.input:focus {
+  outline: none;
+  border-color: #4f46e5; /* Синий цвет при фокусе */
+  box-shadow: 0 0 4px rgba(79, 70, 229, 0.5); /* Лёгкое свечение при фокусе */
+}
+
+.button {
+  background-color: #4caf50; /* Зелёный цвет кнопки сохранения */
+  color: white; /* Белый текст на кнопке */
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #45a049; /* Темнее при наведении */
+}
+
+.cancelButton {
+  background-color: #f44336; /* Красный цвет кнопки отмены */
+}
+
+.cancelButton:hover {
+  background-color: #e53935; /* Темнее при наведении на кнопку отмены */
+}
+
+.buttonsContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.label {
+  margin-bottom: 4px; /* Отступ снизу для лейблов */
+  font-weight: bold; /* Жирный шрифт для лейблов */
+}

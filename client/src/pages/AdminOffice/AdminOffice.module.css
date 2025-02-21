@@ -1,0 +1,9 @@
+.h1{
+    padding-bottom: 40px;
+    border-bottom: 3px solid white;
+}
+
+.btn{
+    position: relative;
+    left: 42%;
+}

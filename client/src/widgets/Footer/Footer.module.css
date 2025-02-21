@@ -1,0 +1,13 @@
+.footer {
+  background-color: #333; /* Темный фон для футера */
+  color: #fff; /* Белый текст */
+  text-align: center; /* Центрирование текста */
+  bottom: 0; 
+  left: 0; 
+  width: 100%; /* Ширина на весь экран */
+  z-index: 5;
+}
+
+.text {
+  font-size: 14px; /* Размер шрифта */
+}
