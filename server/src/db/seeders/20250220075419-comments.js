@@ -1,8 +1,8 @@
-'use strict';
+"use strict";
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.bulkInsert('Comments', [
+    await queryInterface.bulkInsert("Comments", [
       {
         content: 'This is amazing tea!',
         tea_id: 1, // Соответствует id из таблицы Teas
@@ -77,6 +77,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.bulkDelete('Comments', null, {});
-  }
+    await queryInterface.bulkDelete("Comments", null, {});
+  },
 };

@@ -3,6 +3,7 @@ import UserValidator from '../../../../entities/user/User.validator'
 import UserApi from '../../../../entities/user/UserApi'
 import { useNavigate } from "react-router";
 import { setAccessToken } from "../../../../shared/lib/axiosInstance";
+import styles from './SignInForm.module.css'
 
 const INITIAL_INPUTS_DATA = {
   email: "",
@@ -53,25 +54,39 @@ export default function SignInForm({ setUser }) {
     }
   };
   const { email, password } = inputs;
-  return (
-    <form onSubmit={onSubmitHandler}>
-        <h1>Вход любителей бобрчая</h1>
-        {error && <div>Something wrong... <br />{error}</div>}
-        <label htmlFor="email">Ваша электронная почта:</label>
-      <input
-        type="email"
-        name="email"
-        onChange={onChangeHandler}
-        value={email}
-      />
-        <label htmlFor="password">Ваш пароль:</label>
-      <input
-        type="password"
-        name="password"
-        onChange={onChangeHandler}
-        value={password}
-      />
-      <button type="submit">Войти</button>
-    </form>
-  );
+return (
+  <form className={styles.form} onSubmit={onSubmitHandler}>
+    <h1 className={styles.heading}>Вход любителей бобрчая</h1>
+    {error && (
+      <div className={styles.error}>
+        Something wrong... <br />
+        {error}
+      </div>
+    )}
+    <label className={styles.label} htmlFor="email">
+      Ваша электронная почта:
+    </label>
+    <input
+      className={styles.input}
+      type="email"
+      name="email"
+      onChange={onChangeHandler}
+      value={email}
+    />
+    <label className={styles.label} htmlFor="password">
+      Ваш пароль:
+    </label>
+    <input
+      className={styles.input}
+      type="password"
+      name="password"
+      onChange={onChangeHandler}
+      value={password}
+    />
+    <button className={styles.button} type="submit">
+      Войти
+    </button>
+  </form>
+);
+
 }

@@ -1,0 +1,56 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 400px; /* Ширина формы */
+  margin: 50px auto; /* Центрирование формы по горизонтали */
+  padding: 20px; /* Отступы внутри формы */
+  border: 1px solid #ddd; /* Легкая граница */
+  border-radius: 8px; /* Закругленные углы */
+  background-color: #f9f9f9; /* Фоновый цвет формы */
+}
+
+.heading {
+  text-align: center; /* Центрирование заголовка */
+  margin-bottom: 20px; /* Отступ снизу */
+}
+
+.label {
+  margin-top: 10px; /* Отступ сверху */
+  margin-bottom: 5px; /* Отступ снизу */
+  font-weight: bold; /* Жирный шрифт для лейблов */
+}
+
+.input {
+  padding: 10px; /* Внутренние отступы */
+  margin-bottom: 15px; /* Расстояние между инпутами */
+  border: 1px solid #ccc; /* Граница инпутов */
+  border-radius: 4px; /* Закругленные углы инпутов */
+}
+
+.input:focus {
+  outline: none; /* Убираем стандартное выделение при фокусе */
+  border-color: #4CAF50; /* Цвет границы при фокусе */
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); /* Легкое свечение при фокусе */
+}
+
+.button {
+  background-color: #4CAF50; /* Зеленый цвет кнопки входа */
+  color: white; /* Цвет текста на кнопке */
+  padding: 12px; /* Внутренние отступы кнопки */
+  border: none; /* Убираем границу кнопки */
+  border-radius: 4px; /* Закругленные углы кнопки */
+  cursor: pointer; /* Указатель при наведении на кнопку */
+}
+
+.button:hover {
+  background-color: #367C39; /* Темнее при наведении на кнопку входа */
+}
+
+.error {
+   color: #f44336; /* Красный цвет для сообщений об ошибках */
+   margin-bottom: 15px;
+   padding:10px;
+   border-radius:4px;
+   background-color:#ffebee;
+   border:1px solid #f44336;
+}
